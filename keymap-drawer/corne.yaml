@@ -1,19 +1,19 @@
-layout: {qmk_keyboard: corne_rotated, qmk_layout: LAYOUT_split_3x6_3}
+layout: {zmk_keyboard: corne}
 layers:
   default: ['&td0', '&td8', '&td9', '&td10', P, Y, F, G, C, R, L, ⌫, Ctrl, A, O, E, U, I, D, H, T, N, S, ⌦, '&td16', '&td4', '&td13', J, K, X, B, M, W, V, Z, '&td15',
     '&td12', lower, '&td2', '&td2', raise, Alt]
   lower:
   - {t: ▽, type: trans}
-  - {t: '7', s: '['}
-  - {t: '5', s: '{'}
-  - {t: '3', s: '}'}
-  - {t: '1', s: (}
-  - {t: '9', s: '='}
-  - {t: '0', s: '*'}
-  - {t: '2', s: )}
-  - {t: '4', s: +}
-  - {t: '6', s: ']'}
-  - {t: '8', s: '!'}
+  - '7'
+  - '5'
+  - '3'
+  - '1'
+  - '9'
+  - '0'
+  - '2'
+  - '4'
+  - '6'
+  - '8'
   - {t: ▽, type: trans}
   - F11
   - F1
@@ -111,7 +111,7 @@ layers:
   - ⏮️
   - ⏯
   - ⏭️
-  - {t: ▽, type: trans}
+  - {t: gaming_media, h: toggle}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -131,5 +131,5 @@ layers:
   - ⏎
   - {type: held}
   - Alt
-  gaming_media: [Esc, Q, W, E, R, T $trans $trans $trans $trans $trans $trans, '&td16', A, S, D, F, G, ⏮️, ⏯, NEXT $trans $trans $trans, Ctrl, Z, X, C, V, B, MUTE,
-    Vol Down, VOL UP $trans $trans $trans, Gui, ↹, ␣, RET $trans, Alt]
+  gaming_media: [Esc, Q, W, E, R, T, Y, U, I, O, P, ⌫, LSHIFT, A, S, D, F, G, H, J, K, L, ;, ⌦, Ctrl, Z, X, C, V, B, N, M, ',', ., /, ↹, Gui, lower, ␣, ⏎, raise,
+    Alt]
