@@ -163,7 +163,7 @@
         fast_tab_gui: tab_gui {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>; 
-            tapping-term-ms = <80>; 
+            tapping-term-ms = <120>; 
             bindings = <&kp LALT>, <&kp LGUI>;
             };
         td13: tap_dance_13 {
@@ -252,14 +252,17 @@
             bindings = <&kp N8>,<&kp EXCL>;
             mods=<(MOD_LSFT|MOD_RSFT)>;
         };
-        doom: doom{
+        doom: doom {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <TAP_SPEED>;         // Adjust tapping term for tap vs. hold
-            quick-tap-ms = <0>;              // Ignore very fast taps (optional)
-            require-prior-idle-ms = <0>;     // Avoid false triggers during quick sequences
-            flavor = "tap-preferred";        // "tap-preferred" means a quick tap sends the key first
-            bindings = <&to>, <&kp>;         // Hold switches layers, tap sends a key press
+
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <125>;
+
+            flavor = "tap-preferred";
+
+            bindings = <&kp>, <&to>;
         };
         macros {
             audio: audio {
@@ -319,7 +322,7 @@
         };
 
         lower_layer {
-            display-name="Numers";
+            display-name="Numbers";
                 // -----------------------------------------------------------------------------------------
                 // |  ESC   |  7   |  5  |  3  |  1  |  9  |            |  0  |  2  |  4  |  6  |  8  |      |
                 // | F11    |  F1  |  F2 |  F3 |  F4 |  F5 |            | LFT | DWN |  UP | RGT |     |      |
