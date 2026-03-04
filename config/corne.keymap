@@ -114,7 +114,7 @@
             bindings = <
    &kp ESC &trans &trans &trans &trans &trans          &trans &trans &trans &trans &trans &trans
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
-                                                  &kp LEFT &kp C_PREV &kp C_PP &kp C_NEXT &tog 4 &trans
+                                                  &kp LEFT &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans
    &trans &trans &trans &trans &trans &trans      &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans &trans &trans
                        &trans &trans &trans       &trans &trans &trans
             >;
@@ -128,7 +128,7 @@
         gaming_media_layer {
             label = "GAMING";
             bindings = <
-   &kp ESC &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I &kp O &kp  &layout_switch P 0 BSPC
+   &kp ESC &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I &kp O &layout_switch P 0 BSPC
    &kp LSHIFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K &kp L &kp SEMICOLON &kp DEL
    &kp LCTRL &kp Z &kp X &kp C &kp V &kp B    &kp N &kp M &kp COMMA &kp PERIOD &kp SLASH &kp TAB
                     &kp LGUI &mo 1 &kp SPACE  &kp RET &mo 2 &kp RALT
