@@ -1,8 +1,49 @@
 layout: {zmk_keyboard: corne}
 layers:
-  default: ['&td0', '&td8', '&td9', '&td10', P, Y, F, G, C, R, L, ⌫, Ctrl, A, O, E, U, I, D, H, T, N, S, ⌦, '&td16', '&td4', '&td13', J, K, X, B, M, W, V, Z, '&td15',
-    '&td12', lower, '&td2', '&td2', raise, Alt]
-  lower:
+  DVORAK:
+  - '&td0'
+  - '&td8'
+  - '&td9'
+  - '&td10'
+  - P
+  - Y
+  - F
+  - G
+  - C
+  - R
+  - {t: GAMING, h: L}
+  - ⌫
+  - Ctrl
+  - A
+  - O
+  - E
+  - U
+  - I
+  - D
+  - H
+  - T
+  - N
+  - S
+  - ⌦
+  - '&td16'
+  - '&td4'
+  - '&td13'
+  - J
+  - K
+  - X
+  - B
+  - M
+  - W
+  - V
+  - Z
+  - '&td15'
+  - '&td12'
+  - LOWER
+  - '&td2'
+  - '&td2'
+  - RAISE
+  - Alt
+  LOWER:
   - {t: ▽, type: trans}
   - '7'
   - '5'
@@ -45,7 +86,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  raise:
+  RAISE:
   - {t: ▽, type: trans}
   - '['
   - '{'
@@ -88,7 +129,7 @@ layers:
   - {t: ▽, type: trans}
   - {type: held}
   - {t: ▽, type: trans}
-  bt_media:
+  CONTROL:
   - Esc
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -111,7 +152,7 @@ layers:
   - ⏮️
   - ⏯
   - ⏭️
-  - {t: gaming_media, h: toggle}
+  - {t: GAMING, h: toggle}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -125,11 +166,11 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Gui
+  - {t: ▽, type: trans}
   - {type: held}
-  - ␣
-  - ⏎
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {type: held}
-  - Alt
-  gaming_media: [Esc, Q, W, E, R, T, Y, U, I, O, P, ⌫, LSHIFT, A, S, D, F, G, H, J, K, L, ;, ⌦, Ctrl, Z, X, C, V, B, N, M, ',', ., /, ↹, Gui, lower, ␣, ⏎, raise,
-    Alt]
+  - {t: ▽, type: trans}
+  GAMING: [Esc, Q, W, E, R, T, Y, U, I, O, '', '&layout_switch P 0 BSPC', LSHIFT, A, S, D, F, G, H, J, K, L, ;, ⌦, Ctrl, Z, X, C, V, B, N, M, ',', ., /, ↹, Gui, LOWER,
+    ␣, ⏎, RAISE, Alt]

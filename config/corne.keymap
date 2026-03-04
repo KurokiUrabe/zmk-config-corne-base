@@ -8,12 +8,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define DVRK 0
-#define NAV 1
-#define SYM 2
-#define BT 3
-#define GG 4
-
 #define TAP_SPEED 200
 
 #define TD_TAB      &td0
@@ -35,8 +29,8 @@
 #define TD_SCLOCK   &td16
 
 / {
+
     behaviors {
-        /* --- TAP DANCES (unchanged) --- */
         td0: tap_dance_0 { compatible="zmk,behavior-tap-dance"; #binding-cells=<0>; tapping-term-ms=<TAP_SPEED>; bindings=<&kp TAB>,<&kp ESC>; };
         td1: tap_dance_1 { compatible="zmk,behavior-tap-dance"; #binding-cells=<0>; tapping-term-ms=<TAP_SPEED>; bindings=<&kp LSHIFT>,<&kp CAPSLOCK>; };
         td2: tap_dance_2 { compatible="zmk,behavior-tap-dance"; #binding-cells=<0>; tapping-term-ms=<TAP_SPEED>; bindings=<&kp SPACE>,<&kp ENTER>; };
@@ -54,6 +48,14 @@
         td14: tap_dance_14 { compatible="zmk,behavior-tap-dance"; #binding-cells=<0>; tapping-term-ms=<TAP_SPEED>; bindings=<&kp AT>,<&kp CARET>; };
         td15: tap_dance_15 { compatible="zmk,behavior-tap-dance"; #binding-cells=<0>; tapping-term-ms=<TAP_SPEED>; bindings=<&kp TAB>,<&kp LWIN>; };
         td16: tap_dance_16 { compatible="zmk,behavior-tap-dance"; #binding-cells=<0>; tapping-term-ms=<TAP_SPEED>; bindings=<&sk LSHIFT>,<&kp CAPSLOCK>; };
+        layout_switch: layout_switch {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYOUT_SWITCH";
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&to>;
+        };
     };
 
     conditional_layers {
@@ -67,18 +69,24 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* ---------------- DEFAULT (DVORAK) ---------------- */
+        // -----------------------------------------------------------------------------------------
+        // |TAB:ESC   | ; : | , < | . > |  P  |  Y  |         | F   |  G   |  C  |  R  | L  | BKSP |
+        // | CTRL     |  A  |  O  |  E  |  U  |  I  |         |  D  |  H  |  T  |  N  |  S  |  DEL |
+        // | LSFT:CAP |' "  | q @ |  J  |  K  |  X  |         |  B  |  M  |  W  |  V  |  Z  | TAB  |
+        //                        | GUI | LWR | SPC |         | ENT | RSE | ALT |
         default_layer {
+            label = "DVORAK";
             bindings = <
-   TD_TAB TD_SCLN TD_COMM TD_DOT &kp P &kp Y      &kp F &kp G &kp C &kp R &kp L &kp BSPC
+   TD_TAB TD_SCLN TD_COMM TD_DOT &kp P &kp Y      &kp F &kp G &kp C &kp R  &layout_switch L 4 &kp BSPC
    &kp LCTRL &kp A &kp O &kp E &kp U &kp I        &kp D &kp H &kp T &kp N &kp S &kp DEL
    TD_SCLOCK TD_QUOTE TD_ARR &kp J &kp K &kp X    &kp B &kp M &kp W &kp V &kp Z TD_TAW
                      TD_ALT &mo 1 TD_SPC           TD_SPC &mo 2 &kp RALT
             >;
         };
 
-        /* ---------------- LOWER ---------------- */
+        // LOWER
         lower_layer {
+            label = "LOWER";
             bindings = <
    &trans &kp N7 &kp N5 &kp N3 &kp N1 &kp N9      &kp N0 &kp N2 &kp N4 &kp N6 &kp N8 &trans
    &kp F11 &kp F1 &kp F2 &kp F3 &kp F4 &kp F5     &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
@@ -87,8 +95,9 @@
             >;
         };
 
-        /* ---------------- RAISE ---------------- */
+        // RAISE
         raise_layer {
+            label = "RAISE";
             bindings = <
    &trans &kp LBKT &kp LBRC &kp RBRC &kp LPAR &kp EQUAL     &kp STAR &kp RPAR &kp PLUS &kp RBKT &kp EXCL &trans
    &kp LCTRL &kp TILDE &kp PRCNT &kp GRAVE TD_SLSH TD_ATCAT &trans &trans &trans &trans &trans &trans
@@ -97,21 +106,29 @@
             >;
         };
 
-        /* ---------------- CONTROL LAYER (Lower + Raise) ---------------- */
+        // -----------------------------------------------------------------------------------------
+        // CONTROL LAYER (Lower + Raise)
+        // Contains BT controls + Gaming toggle
         bt_media_layer {
+            label = "CONTROL";
             bindings = <
    &kp ESC &trans &trans &trans &trans &trans          &trans &trans &trans &trans &trans &trans
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
                                                   &kp LEFT &kp C_PREV &kp C_PP &kp C_NEXT &tog 4 &trans
    &trans &trans &trans &trans &trans &trans      &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans &trans &trans
-                       &kp LGUI &trans &kp SPACE  &kp RET &trans &kp RALT
+                       &trans &trans &trans       &trans &trans &trans
             >;
         };
 
-        /* ---------------- GAMING (QWERTY) ---------------- */
+        // -----------------------------------------------------------------------------------------
+        // | ESC |  Q  |  W  |  E  |  R  |  T  |         |  Y  |  U  |  I  |  O  |  P  | BSPC |
+        // |LSHFT|  A  |  S  |  D  |  F  |  G  |         |  H  |  J  |  K  |  L  |  ;  | DEL  |
+        // |LCTRL|  Z  |  X  |  C  |  V  |  B  |         |  N  |  M  |  ,  |  .  |  /  | TAB  |
+        //                      | LGUI | LWR | SPC |     | ENT | RSE | ALT |
         gaming_media_layer {
+            label = "GAMING";
             bindings = <
-   &kp ESC &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I &kp O &kp P &kp BSPC
+   &kp ESC &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I &kp O &kp  &layout_switch P 0 BSPC
    &kp LSHIFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K &kp L &kp SEMICOLON &kp DEL
    &kp LCTRL &kp Z &kp X &kp C &kp V &kp B    &kp N &kp M &kp COMMA &kp PERIOD &kp SLASH &kp TAB
                     &kp LGUI &mo 1 &kp SPACE  &kp RET &mo 2 &kp RALT
