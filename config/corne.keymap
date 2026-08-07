@@ -11,10 +11,9 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define DVRK 0
-#define GG 1
-#define NUM 2
-#define SYM 3
-#define SET 4
+#define NUM 1
+#define SYM 2
+#define SET 3
 
 // TAP_DANCE settings
 #define TAP_SPEED 200
@@ -237,18 +236,6 @@
             bindings = <&kp N8>,<&kp EXCL>;
             mods=<(MOD_LSFT|MOD_RSFT)>;
         };
-        doom: doom {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
-
-            flavor = "tap-preferred";
-
-            bindings = <&kp>, <&to>;
-        };
         macros {
             audio: audio {
                 compatible = "zmk,behavior-macro";
@@ -289,23 +276,7 @@
                                             LGUI &mo NUM TD_SPC                   TD_SPC &mo SYM &kp RCTRL
             >;
         };
-        // gaming_media_layer: gaming and media controls
         
-        gaming_media_layer {
-                // -----------------------------------------------------------------------------------------
-                // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-                // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-                // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-                //                    | LGUI | LWR | SPC |   | ENT | RSE  | ALT |
-            display-name="Gaming";
-            bindings = <
-                TD_TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-                &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-                TD_SCLOCK &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &doom DVRK ESC
-                                TD_FASTTAB &mo NUM &kp SPACE   &kp RET &mo SYM &kp RALT
-            >;
-        };
-
         lower_layer {
             display-name="Numbers";
                 // -----------------------------------------------------------------------------------------
