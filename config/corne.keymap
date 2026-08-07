@@ -35,12 +35,10 @@
 #define TD_COMM     &td9    // COMMA LESS_THAN 
 #define TD_DOT      &td10   // PERIOD GREATER_THAN 
 #define TD_BACKF    &td11   // GRAVE TILDE
-#define TD_ALT      &td12   // LALT LGUI
-#define TD_ARR      &td13   // Q AT (@)
-#define TD_ATCAT    &td14   // AT CARET 
-#define TD_TAW      &td15   // TAB LWIN
-#define TD_SCLOCK   &td16   // (S)LSHIFT CAPSLOCK (Sticky shift)
-#define TD_FASTTAB      &fast_tab_gui
+#define TD_ARR      &td12   // Q AT (@)
+#define TD_ATCAT    &td13   // AT CARET
+#define TD_TAW      &td14   // TAB LWIN
+#define TD_SCLOCK   &td15   // (S)LSHIFT CAPSLOCK (Sticky shift)
 #define RGBTOG      &rgb_ug RGB_TOG
 #define RGBP        &rgb_ug RGB_COLOR_HSB(274,100,10)
 #define RGBEFF      &rgb_ug RGB_EFF
@@ -153,38 +151,25 @@
             tapping-term-ms = <TAP_SPEED>; 
             bindings = <&kp GRAVE>, <&kp TILDE>;
             };            
-
-        td12: tap_dance_12 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>; 
-            tapping-term-ms = <TAP_SPEED>; 
-            bindings = <&kp LALT>, <&kp LGUI>;
-            };
-        fast_tab_gui: tab_gui {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>; 
-            tapping-term-ms = <120>; 
-            bindings = <&kp LALT>, <&kp LGUI>;
-            };
-        td13: tap_dance_13 {
+        td12: bt_media_layer tap_dance_13 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>; 
             tapping-term-ms = <TAP_SPEED>; 
             bindings = <&kp Q>, <&kp AT>;
             };
-        td14: tap_dance_14 {
+        td13: tap_dance_14 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>; 
             tapping-term-ms = <TAP_SPEED>; 
             bindings = <&kp AT>, <&kp CARET>;
             };
-        td15: tap_dance_15 {
+        td14: tap_dance_15 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>; 
             tapping-term-ms = <TAP_SPEED>; 
             bindings = <&kp TAB>, <&kp LWIN>;
             };
-        td16: tap_dance_16 {
+        td15: tap_dance_16 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>; 
             tapping-term-ms = <TAP_SPEED>; 
@@ -301,7 +286,7 @@
                 TD_TAB     TD_SCLN  TD_COMM TD_DOT &kp P &kp Y                   &kp F &kp G  &kp C     &kp R   &kp L    &kp BSPC
                 &kp LCTRL  &kp A    &kp O   &kp E  &kp U &kp I                   &kp D &kp H  &kp T     &kp N   &kp S    &kp DEL
                 TD_SCLOCK TD_QUOTE TD_ARR  &kp J  &kp K &kp X                   &kp B &kp M  &kp W     &kp V   &kp Z     &doom GG ESC
-                                            TD_ALT  &mo NUM TD_SPC                   TD_SPC &mo SYM &kp RALT
+                                            LGUI &mo NUM TD_SPC                   TD_SPC &mo SYM &kp RCTRL
             >;
         };
         // gaming_media_layer: gaming and media controls
